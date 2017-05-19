@@ -4,9 +4,9 @@ info:
   title: Todo API
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -30,28 +30,26 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Todo"
-      x-swagger-router-controller:
-        "Get All Todos"
+      x-swagger-router-controller: "GetAllTodos"
     post:
-      description: "This endpoint adds a new todo to the list"
+      description: "Add a new Todo"
       operationId: "AddTodo"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "todo"
-        description: "the Todo to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Todo"
+        - in: "body"
+          name: "todo"
+          description: "the Todo to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Todo"
       responses:
         200:
-          description: "Successful Todo added"
-      x-swagger-router-controller:
-        "AddToDo"
+          description: "Successful Todo add"
+      x-swagger-router-controller: "AddTodo"
   /todo/{id}:
     get:
-      description: "Retrieve a single Todo by id"
+      description: "Retrieve a single todo by id"
       operationId: "FindTodoById"
       produces:
       - "application/json"
@@ -64,13 +62,12 @@ paths:
         format: "int64"
       responses:
         200:
-          description: "todo response"
+          description: "Todo response"
           schema:
             $ref: "#/definitions/Todo"
-      x-swagger-router-controller:
-          "FindTodoById"
+      x-swagger-router-controller: "FindTodoById"
     delete:
-      description: "Delete a todo by id"
+      description: "Delete a todo by Id"
       operationId: "DeleteTodoById"
       parameters:
       - name: "id"
@@ -80,11 +77,10 @@ paths:
         type: "integer"
         format: "int64"
       responses:
-        204:
-          description: "todo delete response"
-      x-swagger-router-controller:
-        "DeleteTodoById"
-    put:
+        204: 
+         description: "todo deleted"
+      x-swagger-router-controller: "DeletTodoById"
+    put: 
       description: "Update a single todo by id"
       operationId: "UpdateTodoById"
       parameters:
@@ -102,7 +98,7 @@ paths:
           $ref: "#/definitions/Todo"
       responses:
         200:
-          description: "todo updated"
+          description: "Todo updated"
         400:
           description: "Yikes! An error!"
   /swagger:
@@ -117,21 +113,21 @@ definitions:
         description: "Id for the todo"
       todo:
         type: "string"
-        description: "the todo item"
-      datecreated:
+        description: "The todo item."
+      dateCreated:
         type: "string"
         format: "date-time"
-        description: "Timestamp when the Todo was created. Set by server"
+        description: "Timestamp when the todo was created. Set by server"
       author:
         type: "string"
-        description: "Creator or owner of the todo"
+        description: "creator or owner of the todo"
       duedate:
         type: "string"
         format: "date-time"
-        description: "when the todo is due to be completed"
+        description: "When the todo is due"
       completed:
         type: "boolean"
-        description: "Indicates if the task has been completed"
+        description: "Indicates if the todo has been completed or not"
   ErrorResponse:
     required:
       - message
