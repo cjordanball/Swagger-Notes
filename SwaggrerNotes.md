@@ -177,3 +177,13 @@
     **NOTE**: for now, just cut and paste. We'll figure out what it means later.
     
     f. In the **swagger** folder, include the file, **swagger.yaml**, which will be our big, official, swagger file.
+    
+## Miscellaneous Syntax Rules
+1. Swagger offers tremendous advantages in allowing the front-end and back-end of an application to have a single, easy-to-review interface. However, that comes at the expense of having to follow a very rigid syntax scheme, in which a single errant space can blow up the api server into a torrent of indecipherable error messages. The following is a somewhat random list of suggestions, as well as rules to follow in putting together the Swagger file. Most of these tips cost hours spent screaming at the Swagger editor or Stack Overflow to obtain, so keep them in mind.
+
+##### If a request body is in JSON, use a single parameter with "in: body". If it is form data, you will have several parameters, each with "in: formData".
+
+##### If the parameter is "in: body", then a "schema" object is required.
+
+##### Parameters must have an "in" property, telling swagger where the parameter is found. It can be "body", "query", "path", "formData".
+
